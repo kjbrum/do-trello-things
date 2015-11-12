@@ -4,23 +4,47 @@
 
 
 /*************************************************
- *  Autohide Stuff
+ *  Event: Card is clicked
  *************************************************/
-// Autohide items when a card is refreshed
 $('.list-card-details').click( function() {
     setTimeout(function() {
+        // Hide items
         hideCheckedItems();
+
+        // Add toggle button
+        addCheckedToggle();
     }, 1000);
 });
 
-// Autohide items when a card is clicked
+
+
+/*************************************************
+ *  Event: Card is refreshed
+ *************************************************/
 $(document).ready(function() {
     if( $('.js-checklist-list').length ) {
         setTimeout(function() {
+            // Hide items
             hideCheckedItems();
+
+            // Add toggle button
+            addCheckedToggle();
         }, 1000);
     }
 });
+
+
+
+/*************************************************
+ *  Event: Button is clicked
+ *************************************************/
+// $(document).ready(function() {
+    $(document).on('click', '.js-tt-toggle-checked', function() {
+        console.log('toggle checked items');
+    });
+// });
+
+
 
 /*************************************************
  *  Helper Functions
@@ -31,3 +55,8 @@ function hideCheckedItems() {
         this.click();
     });
 };
+
+// Add a button for toggling checked items
+function addCheckedToggle() {
+    $('.window-module.other-actions .u-clearfix').append('<a class="button-link js-tt-toggle-checked" title="Toggle the finished checklist items."><span class="icon-sm icon-subscribe"></span> Hide Checked</a>');
+}
