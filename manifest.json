@@ -25,6 +25,7 @@
         "*://*.trello.com/*"
       ],
       "js": [
+        "src/inject/jquery-2.1.4.min.js",
         "src/inject/inject.js"
       ]
     }

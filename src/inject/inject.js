@@ -1,18 +1,33 @@
-/**
- * Custom JS
- **/
+/*************************************************
+ *  JavaScript that gets injected
+ *************************************************/
 
-var forEach = Array.prototype.forEach,
-    $$ = document.querySelectorAll.bind(document);
-forEach.call($$('.list-card-details'), function(el) {
-    el.addEventListener('click', hideCheckedItems);
+
+/*************************************************
+ *  Autohide Stuff
+ *************************************************/
+// Autohide items when a card is refreshed
+$('.list-card-details').click( function() {
+    setTimeout(function() {
+        hideCheckedItems();
+    }, 1000);
 });
 
+// Autohide items when a card is clicked
+$(document).ready(function() {
+    if( $('.js-checklist-list').length ) {
+        setTimeout(function() {
+            hideCheckedItems();
+        }, 1000);
+    }
+});
+
+/*************************************************
+ *  Helper Functions
+ *************************************************/
+// Hide checked items
 function hideCheckedItems() {
-    setTimeout(function() {
-        var items = document.getElementsByClassName('js-hide-checked-items');
-        for(var i=0; i<items.length; i++) {
-            items[i].click();
-        }
-    }, 1500);
+    $('.js-hide-checked-items').each( function() {
+        this.click();
+    });
 };
