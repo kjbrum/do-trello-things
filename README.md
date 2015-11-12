@@ -1,4 +1,4 @@
-# Do Trell Things
+# Do Trello Things
 
 > A Chrome extension for making Trello better.
 
